@@ -161,6 +161,7 @@ a.downapp{
  }
 
  .search-list span {
+	height: 100px;
  	color: #333;
  	font-size: 16px;
  	line-height: 100px;
@@ -272,6 +273,7 @@ a.downapp{
  	right: 0;
  	padding: 20px 0px;
 	 box-sizing: border-box;
+	 z-index: 10;
 	 /* position: relative; */
 	 
  }
@@ -353,14 +355,34 @@ a.downapp{
  .banner-imgs {
  	width: 100%;
  	height: 100%;
- 	background: green;
+ 	/* background: green; */
  }
 
- .banner-imgs img {
+ .banner-imgs .imgBox {
  	width: 100%;
- 	height: 100%;
- }
+	 height: 100%;
 
+	 
+ }
+ .banner-imgs .imgBox a {
+display: block;
+	width: 1226px;
+height: 460px;
+opacity: 0;
+position: absolute;
+left: 0;
+top: 0;
+opacity: 0;
+transition: all 1s;
+ }
+ .banner-imgs .imgBox a img{
+	width: 1226px;
+	height: 460px;
+
+ }
+.banner-imgs .imgBox .active{
+	opacity: 1;
+}
  .banner-move-btn{
 	width: 41px;
 	height: 69px;
@@ -368,6 +390,7 @@ a.downapp{
 	top: 0;
 	bottom: 0;
 	margin: auto 0;
+	z-index: 10;
 }
 .banner-move-btn1{
     left: 234px;
@@ -398,9 +421,15 @@ a.downapp{
  	height: 10px;
  	position: absolute;
  	right: 40px;
- 	bottom: 30px;
+	 bottom: 30px;
+	 z-index: 10;
  }
+.dots .active{
+    background: rgba(255,255,255,0.4);
+	border-color: rgba(0,0,0,0.4);
+	border: 2px solid #fff;
 
+}
  .dot {
 	display: block;
     width: 6px;
@@ -421,6 +450,7 @@ a.downapp{
 	background: rgba(255,255,255,0.4);
 	border-color: rgba(0,0,0,0.4);
 	border: 2px solid #fff;
+	cursor: pointer;
 }
  /* 大米官网轮播图部分结束 */
  /* 广告部分开始 */
@@ -946,7 +976,26 @@ a.downapp{
  	float: right;
  	text-align: center;
  }
-
+.intell-title-right {
+ 	height: 58px;
+ 	float: right;
+ 	text-align: center;
+ }
+ .intell-title-right2 {
+	height: 58px;
+	float: right;
+	text-align: center;
+}
+.intell-title-right3 {
+	height: 58px;
+	float: right;
+	text-align: center;
+}
+.intell-title-right4 {
+	height: 58px;
+	float: right;
+	text-align: center;
+}
  .elec-right {
  	height: 26px;
  	margin: 13px 0 0 30px;
@@ -963,16 +1012,36 @@ a.downapp{
  	float: left;
  }
 
- .elec-right2:hover {
+ /* .elec-right2:hover {
  	height: 26px;
  	margin: 13px 0 0 30px;
  	color: #FF6700;
  	border-bottom: 1px solid #FF6700;
  	float: left;
  	cursor: pointer;
-
- }
-
+ } */
+.elec-title-right .active{
+	color:#ff6700;
+	border-bottom: 1px solid #FF6700;
+	
+}
+.intell-title-right .active{
+	color:#ff6700;
+	border-bottom: 1px solid #FF6700;
+	
+}
+.intell-title-right2 .active{
+	color:#ff6700;
+	border-bottom: 1px solid #FF6700;
+}
+.intell-title-right3 .active{
+	color:#ff6700;
+	border-bottom: 1px solid #FF6700;
+}
+.intell-title-right4 .active{
+	color:#ff6700;
+	border-bottom: 1px solid #FF6700;
+}
  .elect-left {
  	width: 234px;
  	height: 614px;
@@ -1000,11 +1069,59 @@ a.downapp{
  	box-shadow: 0 10px 30px 3px rgba(0, 0, 0, 0.1);
 
  }
-
- .elect-list {
+.elect-lists{
+	width: 992px;
+	height: 100%;
+	float: right;
+	position: relative;
+} 
+.elect-lists2{
+	width: 992px;
+	height: 100%;
+	float: right;
+	position: relative;
+}
+.elect-lists3{
+	width: 992px;
+	height: 100%;
+	float: right;
+	position: relative;
+}
+.elect-lists4{
+	width: 992px;
+	height: 100%;
+	float: right;
+	position: relative;
+}
+.elect-lists5{
+	width: 992px;
+	height: 100%;
+	float: right;
+	position: relative;
+}
+.elect-lists .active{
+display: block;
+}
+.elect-lists2 .active{
+	display: block;
+	}
+.elect-lists3 .active{
+	display: block;
+}
+.elect-lists4 .active{
+	display: block;
+}
+.elect-lists5 .active{
+	display: block;
+}
+.elect-list {
  	width: 992px;
  	height: 100%;
- 	float: right;
+	 /* float: right; */
+	 position: absolute;
+	 left: 0;
+	 top: 0;
+	 display: none;
  }
 
  .elect-item2 {
@@ -1160,11 +1277,6 @@ a.downapp{
  	margin: 0 auto;
  }
 
- .intell-title-right {
- 	height: 58px;
- 	float: right;
- 	text-align: center;
- }
 
  .laptop {
  	width: 1226px;
