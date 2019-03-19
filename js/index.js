@@ -217,13 +217,9 @@ window.onload = function () {
     let pages = document.querySelectorAll(".banner-imgs .imgBox a")
     let banner = document.querySelector(".banner-imgs")
     let pre = document.querySelector(".banner-move-btn1")
-
-    console.dir(pre)
     let next = document.querySelector(".banner-move-btn2")
-    console.dir(next)
     let dots=document.querySelectorAll(".dot")
-    let dot=document.querySelector(".dot")
-    console.log(dot)
+
     banner.onmouseenter = function () {
         clearInterval(t)
     }
@@ -259,9 +255,23 @@ window.onload = function () {
     pre.onclick = function () {
         run("pre")
     }
-    dot.onclick=function (){
-        
-    }
+    // 轮播点点击效果
+    dots.forEach(function(item,i){
+        item.onclick=function(){                     //item就是获取到的div
+            dots.forEach(function(item){
+                item.classList.remove("active")
+            })
+            item.classList.add("active")
+            
+            pages.forEach(function(item){
+                item.classList.remove("active")
+            })
+            pages[i].classList.add("active")
+            index=i
+        }
+
+    })
+    
     
 
 
@@ -312,6 +322,48 @@ window.onload = function () {
     select(".intell-title-right2 li", ".elect-lists3 .elect-list")
     select(".intell-title-right3 li", ".elect-lists4 .elect-list")
     select(".intell-title-right4 li", ".elect-lists5 .elect-list")
+
+
+    // 闪购部分平移轮播
+    function translate() {
+        let lbtn = document.querySelector(".flash-more .more-pre");
+        let rbtn = document.querySelector(".flash-more .more-next");
+        let ull = document.querySelector(".flash-banner");
+        let widths = parseInt(getComputedStyle(ull, null).width) / 3;
+        console.dir(lbtn, rbtn, ull);
+        let num = 0;
+        rbtn.onclick = function () {
+            rbtn.classList.remove(active);
+            num++;
+            if (num === 3) {
+            }
+            let ggg = -widths * num;
+            ull.style.transform = "translateX(" + ggg + "px)";
+        }
+        lbtn.onclick = function () {
+            lbtn.classList.remove(active);
+            num--;
+            if (num === -1) {
+                lbtn.classList.add(active);
+                num = 0;
+            }
+            let ggg = -widths * num;
+            ull.style.transform = "translateX(" + ggg + "px)";
+        }
+    }
+
+//搜索栏选项卡 
+let span = document.querySelectorAll(".search-list span")	
+let listBox = document.querySelectorAll(".searchListSlide")
+span.forEach(function(item,i){
+    item.onmouseenter = function(){
+        listBox.forEach(function(item){
+            item.style.zIndex = 0
+        })
+        listBox[i].style.zIndex = 10
+    }
+})
+
 
 
 }
