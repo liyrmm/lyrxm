@@ -836,7 +836,9 @@ transition: all 1s;
  	line-height: 58px;
  	font-family: 宋体;
  	font-weight: 200;
- 	float: left;
+	 float: left;
+ 	height: 58px;
+	 
  }
 
  h3.title-right {
@@ -846,6 +848,7 @@ transition: all 1s;
  	font-weight: 400;
  	float: right;
  	cursor: pointer;
+ 	height: 58px;
 
  }
 
