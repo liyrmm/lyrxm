@@ -161,10 +161,10 @@ window.onload = function () {
     //     run("pre")
     // }
 
-   // 无缝轮播开始
+    // 无缝轮播开始
     // let box = document.querySelector(".box")
     // animate(box,{'width:300'})
-    
+
     // let prev = 0
     // let now = 0
     // pages.forEach(function(item,i){
@@ -218,7 +218,7 @@ window.onload = function () {
     let banner = document.querySelector(".banner-imgs")
     let pre = document.querySelector(".banner-move-btn1")
     let next = document.querySelector(".banner-move-btn2")
-    let dots=document.querySelectorAll(".dot")
+    let dots = document.querySelectorAll(".dot")
 
     banner.onmouseenter = function () {
         clearInterval(t)
@@ -243,7 +243,7 @@ window.onload = function () {
         })
         pages[index].classList.add("active")
 
-        dots.forEach(function(item,i){
+        dots.forEach(function (item, i) {
             item.classList.remove("active")
         })
         dots[index].classList.add("active")
@@ -256,23 +256,23 @@ window.onload = function () {
         run("pre")
     }
     // 轮播点点击效果
-    dots.forEach(function(item,i){
-        item.onclick=function(){                     //item就是获取到的div
-            dots.forEach(function(item){
+    dots.forEach(function (item, i) {
+        item.onclick = function () {                     //item就是获取到的div
+            dots.forEach(function (item) {
                 item.classList.remove("active")
             })
             item.classList.add("active")
-            
-            pages.forEach(function(item){
+
+            pages.forEach(function (item) {
                 item.classList.remove("active")
             })
             pages[i].classList.add("active")
-            index=i
+            index = i
         }
 
     })
-    
-    
+
+
 
 
 
@@ -325,45 +325,107 @@ window.onload = function () {
 
 
     // 闪购部分平移轮播
-    function translate() {
-        let lbtn = document.querySelector(".flash-more .more-pre");
-        let rbtn = document.querySelector(".flash-more .more-next");
-        let ull = document.querySelector(".flash-banner");
-        let widths = parseInt(getComputedStyle(ull, null).width) / 3;
-        console.dir(lbtn, rbtn, ull);
-        let num = 0;
-        rbtn.onclick = function () {
-            rbtn.classList.remove(active);
-            num++;
-            if (num === 3) {
-            }
-            let ggg = -widths * num;
-            ull.style.transform = "translateX(" + ggg + "px)";
+    let flashbtn_left = document.querySelector(".flash-more .more-pre")
+    let flashbtn_right = document.querySelector(".flash-more .more-next")
+    let flash_body  = document.querySelector(".goods")
+    let num = 0
+
+    flashbtn_right.onclick = function(){
+        if(num>-992){
+            num = num+(-992)
+            flash_body.style.left = num+'px'
+            flashbtn_left.style.color =" #b0b0b0";
+        }else if(num>-1984){
+            num = num+(-992)
+            flash_body.style.left = num+'px'
+            flashbtn_left.style.color =" #b0b0b0";
+            flashbtn_right.style.color =" #e0e0e0";
         }
-        lbtn.onclick = function () {
-            lbtn.classList.remove(active);
-            num--;
-            if (num === -1) {
-                lbtn.classList.add(active);
-                num = 0;
-            }
-            let ggg = -widths * num;
-            ull.style.transform = "translateX(" + ggg + "px)";
+    }
+    flashbtn_left.onclick = function(){
+        if(num<-992){
+            num = num-(-992)
+            flash_body.style.left = num+'px'
+            flashbtn_right.style.color =" #b0b0b0";
+        }else if(num<0){
+            num = num-(-992)
+            flash_body.style.left = num+'px'
+            flashbtn_right.style.color =" #b0b0b0";
+            flashbtn_left.style.color =" #e0e0e0";
         }
     }
 
-//搜索栏选项卡 
-let span = document.querySelectorAll(".search-list span")	
-let listBox = document.querySelectorAll(".searchListSlide")
-span.forEach(function(item,i){
-    item.onmouseenter = function(){
-        listBox.forEach(function(item){
-            item.style.zIndex = 0
-        })
-        listBox[i].style.zIndex = 10
+//    为你推荐平移轮播
+let movebtn_left = document.querySelector(".recommend .flash-more .more-pre")
+    let movebtn_right = document.querySelector(".recommend .flash-more .more-next")
+    let recommend  = document.querySelector(".recommend-bottom")
+    let long = 0
+
+    movebtn_right.onclick = function(){
+        if(long>-1226){
+            long = long+(-1226)
+            recommend.style.left = long+'px'
+            movebtn_left.style.color =" #b0b0b0";
+        }else if(long>-2452){
+            long = long+(-1226)
+            recommend.style.left = long+'px'
+            movebtn_left.style.color =" #b0b0b0";
+            movebtn_right.style.color =" #e0e0e0";
+        }
     }
-})
+    movebtn_left.onclick = function(){
+        if(long<-1226){
+            long = long-(-1226)
+            recommend.style.left = long+'px'
+            movebtn_right.style.color =" #b0b0b0";
+        }else if(long<0){
+            long = long-(-1226)
+            recommend.style.left = long+'px'
+            movebtn_right.style.color =" #b0b0b0";
+            movebtn_left.style.color =" #e0e0e0";
+        }
+    }
+
+
+
+    //fixed-big,small响应式返回顶部
+let main = document.querySelector("main");
+let maxSize = main.offsetTop;
+let bigGoTop = document.querySelector(".fanhui-top");
+let smallGoTop = document.querySelector(".fanhui-top1");
+if(document.documentElement.scrollTop > maxSize){
+	bigGoTop.style.display = "block";
+	smallGoTop.style.display = "block";
+}
+bigGoTop.onclick = function(){
+	document.documentElement.scrollTop = 0;
+}
+smallGoTop.onclick = function(){
+	document.documentElement.scrollTop = 0;
+}
+window.onscroll = function(){
+	if(document.documentElement.scrollTop>=maxSize){
+		setTimeout(function(){
+			if(document.documentElement.scrollTop >= maxSize){
+				bigGoTop.style.display = "block";
+				smallGoTop.style.display = "block";
+			}
+		},1000)
+		
+	}else if(document.documentElement.scrollTop == 0){
+		bigGoTop.style.display = "none";
+		smallGoTop.style.display = "none";
+	}
+}
+
 
 
 
 }
+
+            
+
+
+   
+
+
